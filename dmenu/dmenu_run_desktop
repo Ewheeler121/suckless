@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Directories to search for .desktop files
+DIRECTORIES="$HOME/.local/share/applications/"
+CACHE="/tmp/desktop_files"
+
+search_desktop_files() {
+    find "$1" -name '*.desktop' | while IFS= read -r FILE; do
+        if [ -f "$FILE" ]; then
+            printf "%s\n" "$(grep -m 1 '^Name=' "$FILE" | cut -d'=' -f2-)"
+        fi
+    done
+}
+
+if [ -f "$CACHE" ]; then
+    NAMES=$(cat "$CACHE")
+else
+    NAMES=$(for DIR in $DIRECTORIES; do search_desktop_files "$DIR"; done)
+    echo "$NAMES" > $CACHE
+fi
+
+SELECTED=$(echo "$NAMES" | sort -f | dmenu "$@")
+DESKTOP_FILE=$(find $DIRECTORIES -name '*.desktop' | xargs grep -l "^Name=$SELECTED")
+EXEC_CMD=$(grep -m 1 '^Exec=' "$DESKTOP_FILE" | cut -d'=' -f2- | sed 's/%.//')
+
+if grep -m 1 '^Categories=' "$DESKTOP_FILE" | grep -q "ConsoleOnly"; then
+    EXEC_CMD="st -e $EXEC_CMD"
+fi
+
+if [ "$EXEC_CMD" ]; then
+    setsid -f $EXEC_CMD > /dev/null 2>&1 &
+fi

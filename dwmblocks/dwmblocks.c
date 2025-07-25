@@ -34,8 +34,8 @@ void setupsignals();
 void sighandler(int signum, siginfo_t *si, void *ucontext);
 int getstatus(char *str, char *last);
 void statusloop();
-void termhandler();
-void chldhandler();
+void termhandler(int i);
+void chldhandler(int i);
 void pstdout();
 #ifndef NO_X
 void setroot();
@@ -214,12 +214,12 @@ void sighandler(int signum, siginfo_t *si, void *ucontext)
 	}
 }
 
-void termhandler()
+void termhandler(int i)
 {
 	statusContinue = 0;
 }
 
-void chldhandler()
+void chldhandler(int i)
 {
 	while (0 < waitpid(-1, NULL, WNOHANG));
 }

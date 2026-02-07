@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
-#if __has_include("/home/ewheeler121/.cache/wal/colors-wal-st.h")
-#include "/home/ewheeler121/.cache/wal/colors-wal-st.h"
+#if __has_include("colors-wal-st.h")
+#include "colors-wal-st.h"
 #else
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {

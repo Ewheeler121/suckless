@@ -16,8 +16,8 @@ static const char dmenufont[]       = "JetBrainsMono NFM SemiBold:size=12";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
-#if __has_include("/home/ewheeler121/.cache/wal/colors-wal-dwm.h")
-#include "/home/ewheeler121/.cache/wal/colors-wal-dwm.h"
+#if __has_include("colors-wal-dwm.h")
+#include "colors-wal-dwm.h"
 #else
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";

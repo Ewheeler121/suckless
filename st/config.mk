@@ -15,6 +15,7 @@ PKG_CONFIG = pkg-config
 
 # includes and libs
 INCS = -I$(X11INC) \
+	   -I$(HOME)/.cache/wal \
        `$(PKG_CONFIG) --cflags fontconfig` \
        `$(PKG_CONFIG) --cflags freetype2` \
        `$(PKG_CONFIG) --cflags harfbuzz`

@@ -10,8 +10,8 @@ static const char *fonts[] = {
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
-#if __has_include("/home/ewheeler121/.cache/wal/colors-wal-dmenu.h")
-#include "/home/ewheeler121/.cache/wal/colors-wal-dmenu.h"
+#if __has_include("colors-wal-dmenu.h")
+#include "colors-wal-dmenu.h"
 #else
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */

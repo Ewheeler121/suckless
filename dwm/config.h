@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/X.h>
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -139,9 +140,11 @@ static const Key keys[] = {
     { MODKEY,                       XK_Print,  spawn,          SHCMD("screenshot.sh") },
     { MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("screenshot.sh -c ") },
     { MODKEY|ShiftMask|ControlMask, XK_Print,  spawn,          SHCMD("record-screen.sh") },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("slock") },
 	{ 0,                            XF86XK_MonBrightnessUp,   spawn,   SHCMD("brightness.sh +") },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn,   SHCMD("brightness.sh -") },
     { 0,                            XF86XK_AudioPlay,  spawn,          SHCMD("playerctl play-pause") },
+    { 0,                            XF86XK_AudioPause, spawn,          SHCMD("playerctl play-pause") },
 	{ 0,                            XF86XK_AudioNext,  spawn,          SHCMD("playerctl next") },
 	{ 0,                            XF86XK_AudioPrev,  spawn,          SHCMD("playerctl previous") },
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn,   SHCMD("volume.sh +") },

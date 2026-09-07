@@ -141,6 +141,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("screenshot.sh -c ") },
     { MODKEY|ShiftMask|ControlMask, XK_Print,  spawn,          SHCMD("record-screen.sh") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("slock") },
+	{ 0,                            XF86XK_ScreenSaver,      spawn,    SHCMD("slock") },
 	{ 0,                            XF86XK_MonBrightnessUp,   spawn,   SHCMD("brightness.sh +") },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn,   SHCMD("brightness.sh -") },
     { 0,                            XF86XK_AudioPlay,  spawn,          SHCMD("playerctl play-pause") },
